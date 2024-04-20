@@ -1,0 +1,135 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/20/2024  18:28:28  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\Project PRINT (.\Listings\Project.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         ?DT?MAIN
+            DATA    0012H     0002H     UNIT         _DATA_GROUP_
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0063H     UNIT         ?PR?_NIXIE?MAIN
+            CODE    00F2H     0023H     UNIT         ?PR?_DELAY?MAIN
+            CODE    0115H     0015H     UNIT         ?PR?MAIN?MAIN
+            CODE    012AH     000DH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Project (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                  -----    -----
+  +--> ?PR?_DELAY?MAIN
+
+?PR?_DELAY?MAIN                0012H    0002H
+  +--> ?PR?_NIXIE?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/20/2024  18:28:28  PAGE 2
+
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:008FH         PUBLIC        _Nixie
+  D:0080H         PUBLIC        P0
+  B:00A0H.2       PUBLIC        P2_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:00A0H.4       PUBLIC        P2_4
+  C:0115H         PUBLIC        main
+  D:0008H         PUBLIC        NixieTable
+  C:00FCH         PUBLIC        _Delay
+  C:00F5H         SYMBOL        L?0030
+  -------         PROC          L?0029
+  -------         ENDPROC       L?0029
+  C:00F5H         SYMBOL        L?0030
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0012H         SYMBOL        i
+  D:0013H         SYMBOL        j
+  -------         ENDDO         
+  C:00FCH         LINE#         5
+  C:00FCH         LINE#         6
+  C:00FCH         LINE#         7
+  C:0106H         LINE#         8
+  C:0106H         LINE#         11
+  C:0109H         LINE#         12
+  C:010CH         LINE#         14
+  C:010CH         LINE#         15
+  C:010FH         LINE#         16
+  C:0112H         LINE#         17
+  C:0114H         LINE#         18
+  -------         ENDPROC       _DELAY
+  -------         PROC          _NIXIE
+  D:0007H         SYMBOL        Location
+  D:0004H         SYMBOL        Number
+  C:008FH         LINE#         21
+  C:008FH         LINE#         22
+  C:008FH         LINE#         23
+  C:00BCH         LINE#         24
+  C:00BCH         LINE#         25
+  C:00C0H         LINE#         26
+  C:00C4H         LINE#         27
+  C:00C8H         LINE#         28
+  C:00CCH         LINE#         29
+  C:00D4H         LINE#         30
+  C:00DCH         LINE#         31
+  C:00E4H         LINE#         32
+  C:00EAH         LINE#         33
+  C:00EAH         LINE#         34
+  C:00F1H         LINE#         35
+  -------         ENDPROC       _NIXIE
+  -------         PROC          MAIN
+  C:0115H         LINE#         37
+  C:0115H         LINE#         38
+  C:0115H         LINE#         39
+  C:0115H         LINE#         40
+  C:0115H         LINE#         41
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/20/2024  18:28:28  PAGE 3
+
+
+  C:011BH         LINE#         42
+  C:011EH         LINE#         43
+  C:0120H         LINE#         44
+  C:0123H         LINE#         45
+  C:0125H         LINE#         46
+  C:0128H         LINE#         47
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=21.0 xdata=0 code=311
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
