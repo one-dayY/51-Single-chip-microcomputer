@@ -32,6 +32,9 @@ void Nixie(unsigned char Location,Number)
 		case 8:P2_4 = 0;P2_3 = 0;P2_2 = 0;break;
 	}
 	P0 = NixieTable[Number];
+	//消影
+	Delay(1);
+	P0 = 0x00;
 }
 
 void main()
