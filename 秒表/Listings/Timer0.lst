@@ -1,0 +1,72 @@
+C51 COMPILER V9.54   TIMER0                                                                05/09/2024 17:17:11 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TIMER0
+OBJECT MODULE PLACED IN .\Objects\Timer0.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE Timer0.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Time
+                    -r0.lst) OBJECT(.\Objects\Timer0.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          /**
+   4            * @brief  定时器0初始化，1ms，11.0592MHz
+   5            * @param  无
+   6            * @retval 无
+   7            */
+   8          void Timer0_Init()
+   9          {
+  10   1              //配置
+  11   1              
+  12   1              //TMOD = 0x01;  //只能配置一个定时器
+  13   1              
+  14   1              //TMOD = TMOD & 0xF0;  //把低四位的TMOD清零。高四位保持不变
+  15   1              TMOD &= 0xF0;
+  16   1              
+  17   1              //TMOD = TMOD | 0x01;  //把低四位的TMOD置一，高四位保持不变
+  18   1              TMOD |= 0x01;
+  19   1              
+  20   1              TF0 = 0;
+  21   1              TR0 = 1;
+  22   1              //TH0 = 64535 / 256;  //和十进制同样理解，除以10时小数点左移一位，除以256是在二�
+             -��制里面小数点左移8位
+  23   1              //TL0 = 64535 % 256;
+  24   1              TL0 = 0x66;             //设置定时初值
+  25   1              TH0 = 0xFC;             //设置定时初值
+  26   1              
+  27   1              ET0 = 1;
+  28   1              EA = 1;
+  29   1              PT0 = 0;
+  30   1      }
+  31          
+  32          /*定时器中断函数模板
+  33          void Timer0_Routine(void) interrupt 1 
+  34          {
+  35                  static unsigned int T0Count;
+  36          
+  37                  TL0 = 0x66;
+  38                  TH0 = 0xFC;
+  39                  T0Count++;
+  40                  if(T0Count >= 1000)
+  41                  {
+  42                          T0Count = 0;
+  43                  }
+  44          }
+  45          */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     23    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+C51 COMPILER V9.54   TIMER0                                                                05/09/2024 17:17:11 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
