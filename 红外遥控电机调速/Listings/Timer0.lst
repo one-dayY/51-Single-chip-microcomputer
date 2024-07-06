@@ -1,0 +1,62 @@
+C51 COMPILER V9.54   TIMER0                                                                07/06/2024 17:42:59 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TIMER0
+OBJECT MODULE PLACED IN .\Objects\Timer0.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE Timer0.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Time
+                    -r0.lst) OBJECT(.\Objects\Timer0.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          void Timer0_Init()
+   4          {
+   5   1              //配置
+   6   1              
+   7   1              //TMOD = 0x01;  //只能配置一个定时器
+   8   1              
+   9   1              //TMOD = TMOD & 0xF0;  //把低四位的TMOD清零。高四位保持不变
+  10   1              TMOD &= 0xF0;
+  11   1              
+  12   1              //TMOD = TMOD | 0x01;  //把低四位的TMOD置一，高四位保持不变
+  13   1              TMOD |= 0x01;
+  14   1              
+  15   1              //TH0 = 64535 / 256;  //和十进制同样理解，除以10时小数点左移一位，除以256是在二�
+             -��制里面小数点左移8位
+  16   1              //TL0 = 64535 % 256;
+  17   1              TL0 = 0;                //设置定时初值
+  18   1              TH0 = 0;                //设置定时初值
+  19   1              TF0 = 0;                //清除TF0标志
+  20   1              TR0 = 0;                //定时器0不计时
+  21   1      }
+  22          
+  23          void Timer0_SetCounter(unsigned int Value)
+  24          {
+  25   1              TH0 = Value / 256;
+  26   1              TL0 = Value % 256;
+  27   1      }
+  28          
+  29          unsigned int Timer0_GetCounter(void)
+  30          {
+  31   1              return (TH0 << 8)|TL0;
+  32   1      }
+  33          
+  34          void Timer0_Run(unsigned char Flag)
+  35          {
+  36   1              TR0 = Flag;
+  37   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
